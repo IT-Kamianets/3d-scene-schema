@@ -1,4 +1,4 @@
-# IT-Kamianets 3D Engine — Scene Schema
+# IT-Kamianets 3D Engine: Scene Schema
 
 `3d-scene-schema` defines the engine-independent data model used across the **IT-Kamianets 3D Engine ecosystem**.
 
