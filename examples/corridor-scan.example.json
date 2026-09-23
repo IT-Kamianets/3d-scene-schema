@@ -1,0 +1,40 @@
+{
+  "schemaVersion": "1.0.0",
+  "sceneId": "scene_01H8Y",
+  "createdAt": "2026-09-23T09:05:00Z",
+  "updatedAt": "2026-09-23T09:05:00Z",
+  "units": "meters",
+  "coordinateSystem": "right-handed-y-up",
+  "origin": {
+    "position": { "x": 0, "y": 0, "z": 0 },
+    "rotation": { "x": 0, "y": 0, "z": 0, "w": 1 }
+  },
+  "objects": [
+    {
+      "id": "anchor_corridor",
+      "type": "ROOM",
+      "transform": {
+        "position": { "x": 0, "y": 0, "z": 0 },
+        "rotation": { "x": 0, "y": 0, "z": 0, "w": 1 }
+      },
+      "metadata": {
+        "properties": { "name": "Main Corridor" }
+      }
+    },
+    {
+      "id": "anchor_floor",
+      "type": "FLOOR",
+      "parentId": "anchor_corridor",
+      "transform": {
+        "position": { "x": 0, "y": 0, "z": 0 },
+        "rotation": { "x": 0, "y": 0, "z": 0, "w": 1 }
+      },
+      "boundary": [
+        { "x": -1.2, "y": 0 },
+        { "x": 1.2, "y": 0 },
+        { "x": 1.2, "y": 20.0 },
+        { "x": -1.2, "y": 20.0 }
+      ]
+    }
+  ]
+}

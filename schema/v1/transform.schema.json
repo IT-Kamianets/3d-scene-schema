@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "transform.schema.json",
+  "title": "Transform",
+  "description": "Position/rotation/scale of an object, in its parent's local space. Right-handed, Y-up, units in meters. Engine adapters (e.g. 3d-unity-scene) are responsible for converting to/from their own engine's handedness.",
+  "$defs": {
+    "Transform": {
+      "type": "object",
+      "properties": {
+        "position": { "$ref": "common.schema.json#/$defs/Vector3" },
+        "rotation": { "$ref": "common.schema.json#/$defs/Quaternion" },
+        "scale": { "$ref": "common.schema.json#/$defs/Vector3" }
+      },
+      "required": ["position", "rotation"],
+      "additionalProperties": false
+    }
+  }
+}

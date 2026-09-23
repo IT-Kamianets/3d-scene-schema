@@ -1,0 +1,100 @@
+{
+  "schemaVersion": "1.0.0",
+  "sceneId": "scene_01H8Z",
+  "createdAt": "2026-09-23T09:12:00Z",
+  "updatedAt": "2026-09-23T09:12:00Z",
+  "units": "meters",
+  "coordinateSystem": "right-handed-y-up",
+  "origin": {
+    "position": { "x": 12.0, "y": 0, "z": 4.5 },
+    "rotation": { "x": 0, "y": 0, "z": 0, "w": 1 }
+  },
+  "objects": [
+    {
+      "id": "anchor_room",
+      "type": "ROOM",
+      "transform": {
+        "position": { "x": 0, "y": 0, "z": 0 },
+        "rotation": { "x": 0, "y": 0, "z": 0, "w": 1 }
+      },
+      "metadata": {
+        "properties": { "name": "Room A" }
+      }
+    },
+    {
+      "id": "anchor_floor",
+      "type": "FLOOR",
+      "parentId": "anchor_room",
+      "transform": {
+        "position": { "x": 0, "y": 0, "z": 0 },
+        "rotation": { "x": 0, "y": 0, "z": 0, "w": 1 }
+      },
+      "boundary": [
+        { "x": -2.5, "y": -3.0 },
+        { "x": 2.5, "y": -3.0 },
+        { "x": 2.5, "y": 3.0 },
+        { "x": -2.5, "y": 3.0 }
+      ]
+    },
+    {
+      "id": "anchor_ceiling",
+      "type": "CEILING",
+      "parentId": "anchor_room",
+      "transform": {
+        "position": { "x": 0, "y": 2.7, "z": 0 },
+        "rotation": { "x": 0, "y": 0, "z": 0, "w": 1 }
+      },
+      "boundary": [
+        { "x": -2.5, "y": -3.0 },
+        { "x": 2.5, "y": -3.0 },
+        { "x": 2.5, "y": 3.0 },
+        { "x": -2.5, "y": 3.0 }
+      ]
+    },
+    {
+      "id": "anchor_wall_north",
+      "type": "WALL_FACE",
+      "parentId": "anchor_room",
+      "transform": {
+        "position": { "x": 0, "y": 0, "z": -3.0 },
+        "rotation": { "x": 0, "y": 0, "z": 0, "w": 1 }
+      },
+      "boundary": [
+        { "x": -2.5, "y": 0 },
+        { "x": 2.5, "y": 0 },
+        { "x": 2.5, "y": 2.7 },
+        { "x": -2.5, "y": 2.7 }
+      ]
+    },
+    {
+      "id": "anchor_door_entry",
+      "type": "DOOR_FRAME",
+      "parentId": "anchor_wall_north",
+      "transform": {
+        "position": { "x": 1.5, "y": 0, "z": -3.0 },
+        "rotation": { "x": 0, "y": 0, "z": 0, "w": 1 }
+      },
+      "boundary": [
+        { "x": -0.45, "y": 0 },
+        { "x": 0.45, "y": 0 },
+        { "x": 0.45, "y": 2.0 },
+        { "x": -0.45, "y": 2.0 }
+      ]
+    },
+    {
+      "id": "anchor_window_1",
+      "type": "WINDOW_FRAME",
+      "parentId": "anchor_wall_north",
+      "transform": {
+        "position": { "x": -1.5, "y": 1.2, "z": -3.0 },
+        "rotation": { "x": 0, "y": 0, "z": 0, "w": 1 }
+      },
+      "boundary": [
+        { "x": -0.6, "y": -0.6 },
+        { "x": 0.6, "y": -0.6 },
+        { "x": 0.6, "y": 0.6 },
+        { "x": -0.6, "y": 0.6 }
+      ]
+    }
+  ]
+}

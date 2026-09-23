@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "scene-object.schema.json",
+  "title": "SceneObject",
+  "description": "A single element of a scanned room: a surface (wall/floor/ceiling/door/window) or a detected physical object. Modeled after Meta Quest's Scene API / MRUK semantic classifications, but kept engine-neutral.",
+  "$defs": {
+    "SemanticLabel": {
+      "type": "string",
+      "description": "What kind of real-world element this object represents.",
+      "enum": [
+        "ROOM",
+        "FLOOR",
+        "CEILING",
+        "WALL_FACE",
+        "INVISIBLE_WALL_FACE",
+        "DOOR_FRAME",
+        "WINDOW_FRAME",
+        "TABLE",
+        "COUCH",
+        "BED",
+        "STORAGE",
+        "SCREEN",
+        "LAMP",
+        "PLANT",
+        "WALL_ART",
+        "OTHER"
+      ]
+    },
+    "SceneObject": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Stable identifier, e.g. the originating spatial anchor UUID."
+        },
+        "name": { "type": "string" },
+        "type": { "$ref": "#/$defs/SemanticLabel" },
+        "parentId": {
+          "type": ["string", "null"],
+          "description": "id of the containing object (e.g. a room), or null for top-level objects."
+        },
+        "transform": { "$ref": "transform.schema.json#/$defs/Transform" },
+        "boundary": {
+          "$ref": "common.schema.json#/$defs/Polygon2D",
+          "description": "Set for planar surfaces (floor, ceiling, walls, doors, windows)."
+        },
+        "volume": {
+          "$ref": "common.schema.json#/$defs/Bounds3D",
+          "description": "Set for volumetric objects (furniture) instead of, or in addition to, boundary."
+        },
+        "metadata": { "$ref": "common.schema.json#/$defs/Metadata" }
+      },
+      "required": ["id", "type", "transform"],
+      "additionalProperties": false
+    }
+  }
+}

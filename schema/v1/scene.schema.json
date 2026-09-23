@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "scene.schema.json",
+  "title": "Scene (v1)",
+  "description": "Root scene document. Engine- and product-independent: no Unity/Unreal fields, and no knowledge of what is being scanned, stored, or organized (that belongs to the application consuming this schema, e.g. vroom-sync).",
+  "type": "object",
+  "properties": {
+    "schemaVersion": {
+      "type": "string",
+      "const": "1.0.0",
+      "description": "Version of this schema the document conforms to. Bump per the versioning/migration rules in this repo's README."
+    },
+    "sceneId": { "type": "string" },
+    "createdAt": { "type": "string", "format": "date-time" },
+    "updatedAt": { "type": "string", "format": "date-time" },
+    "units": {
+      "type": "string",
+      "const": "meters"
+    },
+    "coordinateSystem": {
+      "type": "string",
+      "const": "right-handed-y-up"
+    },
+    "origin": {
+      "allOf": [{ "$ref": "transform.schema.json#/$defs/Transform" }],
+      "description": "This scene's transform relative to whatever shared parent frame the caller composes it within (e.g. when several scenes were captured in one continuous, spatially-consistent session and need to be stitched back together). Composing `origin` with an object's own `transform` places that object in the parent frame. Identity (zero position, no rotation) if this scene stands alone or has not yet been aligned to a parent frame. The schema makes no assumption about what that parent frame represents — that meaning is defined by whatever application organizes scenes, not by this schema."
+    },
+    "objects": {
+      "type": "array",
+      "items": { "$ref": "scene-object.schema.json#/$defs/SceneObject" }
+    },
+    "metadata": { "$ref": "common.schema.json#/$defs/Metadata" }
+  },
+  "required": [
+    "schemaVersion",
+    "sceneId",
+    "units",
+    "coordinateSystem",
+    "origin",
+    "objects"
+  ],
+  "additionalProperties": false
+}
