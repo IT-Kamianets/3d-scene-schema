@@ -35,7 +35,7 @@
       "additionalProperties": false
     },
     "Polygon2D": {
-      "description": "Ordered boundary points of a planar surface, in the object's local space.",
+      "description": "Ordered boundary points of a planar surface, in the object's local X/Y plane (x along local X, y along local Y). The surface faces the object's local -Z (right-handed; +Z / forward in left-handed engines such as Unity), as Meta Quest scene anchors do: a floor's local -Z points up.",
       "type": "array",
       "items": { "$ref": "#/$defs/Vector2" },
       "minItems": 3

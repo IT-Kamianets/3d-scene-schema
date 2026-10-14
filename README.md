@@ -31,6 +31,12 @@ The first milestone across this workspace is getting `vroom-scanner` working end
 
 **A scene doesn't know where it lives.** Scanning a large interior in one continuous walkthrough (no re-anchoring mid-walk) naturally produces several scenes that share one coordinate frame — but this schema has no concept of "floor" or "space" to group them, because that's an application-level organizational choice, not an engine one. `origin` is how a scene records its offset *within whatever shared parent frame the caller defines*: composing `origin` with an object's `transform` places that object in the parent frame. What that parent frame represents (a floor of a building, a wing, anything else) is entirely up to the application storing the scenes — see `vroom-sync` for how VRoom organizes them.
 
+**Schema 1.1.0 (additive):** scenes can now describe authored levels as well as scans. A `SceneObject` may carry an `asset` (an id from `3d-asset-schema`: the model, light or sound it is shown with), and `type` gains `GROUP` (a container), `MARKER` (a point whose meaning is in `metadata.tags`, e.g. `["spawn", "team:a"]`) and `PROP` (an object shown with its asset). Every 1.0.0 document is also a valid 1.1.0 document. Example: [`examples/arena-level.example.json`](examples/arena-level.example.json).
+
+**Planar surfaces:** a `boundary` polygon lies in its object's local X/Y plane, and the surface faces the object's local −Z (right-handed; +Z, "forward", in Unity), the same as Meta Quest scene anchors. So a floor is rotated so that its local −Z points up.
+
+**Forward:** an object faces its local −Z (right-handed), which is +Z in Unity. A spawn MARKER rotated so its local −Z points at the arena centre makes the player face the centre.
+
 **Versioning:** every root document carries a `schemaVersion` (semver). Breaking changes get a new `schema/v{n}/` directory rather than mutating v1 in place; consumers read `schemaVersion` to know which schema a stored document conforms to.
 
 Example instances: [`examples/room-scan.example.json`](examples/room-scan.example.json) and [`examples/corridor-scan.example.json`](examples/corridor-scan.example.json) — two scenes sharing a coordinate frame, each with its own `origin`.

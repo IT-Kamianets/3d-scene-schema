@@ -1,0 +1,112 @@
+{
+  "schemaVersion": "1.1.0",
+  "sceneId": "example-arena",
+  "createdAt": "2026-10-14T12:00:00Z",
+  "updatedAt": "2026-10-14T12:00:00Z",
+  "units": "meters",
+  "coordinateSystem": "right-handed-y-up",
+  "origin": {
+    "position": { "x": 0, "y": 0, "z": 0 },
+    "rotation": { "x": 0, "y": 0, "z": 0, "w": 1 }
+  },
+  "objects": [
+    {
+      "id": "floor",
+      "name": "Floor",
+      "type": "FLOOR",
+      "parentId": null,
+      "transform": {
+        "position": { "x": 0, "y": 0, "z": 0 },
+        "rotation": { "x": 0.7071068, "y": 0, "z": 0, "w": 0.7071068 }
+      },
+      "boundary": [
+        { "x": -10, "y": -10 },
+        { "x": 10, "y": -10 },
+        { "x": 10, "y": 10 },
+        { "x": -10, "y": 10 }
+      ]
+    },
+    {
+      "id": "spawns",
+      "name": "Spawns",
+      "type": "GROUP",
+      "parentId": null,
+      "transform": {
+        "position": { "x": 0, "y": 0, "z": 0 },
+        "rotation": { "x": 0, "y": 0, "z": 0, "w": 1 }
+      }
+    },
+    {
+      "id": "spawn-a-1",
+      "name": "Spawn A 1",
+      "type": "MARKER",
+      "parentId": "spawns",
+      "transform": {
+        "position": { "x": -8, "y": 0, "z": 0 },
+        "rotation": { "x": 0, "y": -0.7071068, "z": 0, "w": 0.7071068 }
+      },
+      "metadata": { "tags": ["spawn", "team:a"] }
+    },
+    {
+      "id": "spawn-b-1",
+      "name": "Spawn B 1",
+      "type": "MARKER",
+      "parentId": "spawns",
+      "transform": {
+        "position": { "x": 8, "y": 0, "z": 0 },
+        "rotation": { "x": 0, "y": 0.7071068, "z": 0, "w": 0.7071068 }
+      },
+      "metadata": { "tags": ["spawn", "team:b"] }
+    },
+    {
+      "id": "site-a",
+      "name": "Site A",
+      "type": "MARKER",
+      "parentId": null,
+      "transform": {
+        "position": { "x": 0, "y": 0, "z": -6 },
+        "rotation": { "x": 0, "y": 0, "z": 0, "w": 1 }
+      },
+      "volume": {
+        "min": { "x": -2, "y": 0, "z": -2 },
+        "max": { "x": 2, "y": 2, "z": 2 }
+      },
+      "metadata": { "tags": ["objective", "site:a"] }
+    },
+    {
+      "id": "crate-1",
+      "name": "Crate",
+      "type": "PROP",
+      "parentId": null,
+      "transform": {
+        "position": { "x": 2, "y": 0, "z": 2 },
+        "rotation": { "x": 0, "y": 0.2588190, "z": 0, "w": 0.9659258 }
+      },
+      "volume": {
+        "min": { "x": -0.5, "y": 0, "z": -0.5 },
+        "max": { "x": 0.5, "y": 1, "z": 0.5 }
+      },
+      "asset": "props/crate-wood"
+    },
+    {
+      "id": "crate-2",
+      "name": "Crate",
+      "type": "PROP",
+      "parentId": null,
+      "transform": {
+        "position": { "x": -3, "y": 0, "z": 4 },
+        "rotation": { "x": 0, "y": 0, "z": 0, "w": 1 },
+        "scale": { "x": 1.5, "y": 1.5, "z": 1.5 }
+      },
+      "volume": {
+        "min": { "x": -0.5, "y": 0, "z": -0.5 },
+        "max": { "x": 0.5, "y": 1, "z": 0.5 }
+      },
+      "asset": "props/crate-wood"
+    }
+  ],
+  "metadata": {
+    "tags": ["level"],
+    "properties": { "title": "Example arena" }
+  }
+}

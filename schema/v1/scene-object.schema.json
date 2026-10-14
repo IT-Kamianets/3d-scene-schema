@@ -2,11 +2,11 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "scene-object.schema.json",
   "title": "SceneObject",
-  "description": "A single element of a scanned room: a surface (wall/floor/ceiling/door/window) or a detected physical object. Modeled after Meta Quest's Scene API / MRUK semantic classifications, but kept engine-neutral.",
+  "description": "A single element of a scene: a scanned surface (wall/floor/ceiling/door/window) or detected physical object, modeled after Meta Quest's Scene API / MRUK semantic classifications but kept engine-neutral; or, since 1.1.0, an authored element of a level: a group, a marker, or a prop shown with an asset.",
   "$defs": {
     "SemanticLabel": {
       "type": "string",
-      "description": "What kind of real-world element this object represents.",
+      "description": "What the object represents. ROOM ... OTHER are real-world elements of a scan. Since 1.1.0: GROUP (a container with no content of its own), MARKER (a point whose meaning is in metadata.tags, e.g. a spawn point), PROP (an object shown with its asset).",
       "enum": [
         "ROOM",
         "FLOOR",
@@ -23,7 +23,10 @@
         "LAMP",
         "PLANT",
         "WALL_ART",
-        "OTHER"
+        "OTHER",
+        "GROUP",
+        "MARKER",
+        "PROP"
       ]
     },
     "SceneObject": {
@@ -48,7 +51,14 @@
           "$ref": "common.schema.json#/$defs/Bounds3D",
           "description": "Set for volumetric objects (furniture) instead of, or in addition to, boundary."
         },
-        "metadata": { "$ref": "common.schema.json#/$defs/Metadata" }
+        "asset": {
+          "type": "string",
+          "description": "Since 1.1.0. Id of the asset (3d-asset-schema) the object is shown with: a model, a light, a sound. Resolved by the engine, e.g. 3d-unity-assets."
+        },
+        "metadata": {
+          "$ref": "common.schema.json#/$defs/Metadata",
+          "description": "metadata.tags carry the roles a game reads, e.g. [\"spawn\", \"team:a\"] on a MARKER."
+        }
       },
       "required": ["id", "type", "transform"],
       "additionalProperties": false

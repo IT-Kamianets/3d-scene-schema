@@ -27,7 +27,7 @@
       "parentId": "anchor_corridor",
       "transform": {
         "position": { "x": 0, "y": 0, "z": 0 },
-        "rotation": { "x": 0, "y": 0, "z": 0, "w": 1 }
+        "rotation": { "x": 0.7071068, "y": 0, "z": 0, "w": 0.7071068 }
       },
       "boundary": [
         { "x": -1.2, "y": 0 },

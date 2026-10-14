@@ -7,8 +7,8 @@
   "properties": {
     "schemaVersion": {
       "type": "string",
-      "const": "1.0.0",
-      "description": "Version of this schema the document conforms to. Bump per the versioning/migration rules in this repo's README."
+      "enum": ["1.0.0", "1.1.0"],
+      "description": "Version of this schema the document conforms to. 1.1.0 adds asset references and the GROUP, MARKER and PROP types; every 1.0.0 document is also valid 1.1.0. Bump per the versioning/migration rules in this repo's README."
     },
     "sceneId": { "type": "string" },
     "createdAt": { "type": "string", "format": "date-time" },
